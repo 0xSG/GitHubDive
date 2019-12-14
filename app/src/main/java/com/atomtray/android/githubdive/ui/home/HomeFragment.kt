@@ -26,6 +26,8 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val searchTxt: EditText = root.findViewById(R.id.searchText)
 
+        //TODO: Search using API and Show
+
         homeViewModel.text.observe(this, Observer {
             searchTxt.text
         })
