@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.atomtray.android.githubdive.ui.RepositoriesTab.RepositoryListFragment"
+        android:name="com.atomtray.android.githubdive.searchtabs.RepositoriesTab.RepositoryListFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.atomtray.android.githubdive.ui.UserDetailsTab.UserDetailsFragment"
+        android:name="com.atomtray.android.githubdive.searchtabs.UserDetailsTab.UserDetailsFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.atomtray.android.githubdive.ui.notifications.NotificationsFragment"
+        android:name="com.atomtray.android.githubdive.searchtabs.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

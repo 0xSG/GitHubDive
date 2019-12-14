@@ -1,4 +1,4 @@
-package com.atomtray.android.githubdive.ui.RepositoriesTab
+package com.atomtray.android.githubdive.searchtabs.RepositoriesTab
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.atomtray.android.githubdive.ui.UserDetailsTab
+package com.atomtray.android.githubdive.searchtabs.UserDetailsTab
 
 import android.os.Bundle
 import android.view.LayoutInflater

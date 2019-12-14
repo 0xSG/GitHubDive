@@ -1,4 +1,4 @@
-package com.atomtray.android.githubdive.ui.UserDetailsTab
+package com.atomtray.android.githubdive.searchtabs.UserDetailsTab
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
