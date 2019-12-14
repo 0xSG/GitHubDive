@@ -48,10 +48,11 @@ class HomeFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
-                Toast.makeText(context,"Success",Toast.LENGTH_LONG).show()
+
                 val body = response.body()
 
-
+                Toast.makeText(context,body?.name,Toast.LENGTH_LONG).show()
+                
 
             }
 
