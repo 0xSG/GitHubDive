@@ -1,5 +1,5 @@
 package com.atomtray.android.githubdive.model
 
-class Repositories {
+class UserRepos {
     var repoName:String? = null
 }
