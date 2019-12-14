@@ -1,13 +1,13 @@
-package com.atomtray.android.githubdive.ui.dashboard
+package com.atomtray.android.githubdive.ui.RepositoriesTab
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class RepositoryListViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "Repository list"
     }
     val text: LiveData<String> = _text
 }
