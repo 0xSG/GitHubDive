@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val searchTxt: EditText = root.findViewById(R.id.searchText)
+
 
         //TODO: Search using API and Show
 
@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         ).build()
 
         var service = retrofit.create(GetUserService::class.java)
-        var call = service.getProfileDetails("0xpulsar").enqueue(object :Callback<UserProfile>{
+         service.getProfileDetails("0xpulsar").enqueue(object :Callback<UserProfile>{
             override fun onFailure(call: Call<UserProfile>, t: Throwable) {
                 Toast.makeText(context,"dd",Toast.LENGTH_SHORT).show()
             }
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
                 val body = response.body()
 
                 Toast.makeText(context,body?.name,Toast.LENGTH_LONG).show()
-                
+
 
             }
 
@@ -60,9 +60,7 @@ class HomeFragment : Fragment() {
 
 
 
-        homeViewModel.text.observe(this, Observer {
-            searchTxt.text
-        })
+
         return root
     }
 

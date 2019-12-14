@@ -23,7 +23,7 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val searchTxt: EditText = root.findViewById(R.id.repoSearch)
+
 
         //TODO: Search using API and Show
 
