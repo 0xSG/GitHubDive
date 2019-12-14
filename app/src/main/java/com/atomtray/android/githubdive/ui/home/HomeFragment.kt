@@ -5,11 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.atomtray.android.githubdive.R
+import com.atomtray.android.githubdive.api.BASE_URL
+
+import com.atomtray.android.githubdive.api.GetUserService
+import com.atomtray.android.githubdive.model.UserProfile
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeFragment : Fragment() {
 
@@ -28,10 +37,36 @@ class HomeFragment : Fragment() {
 
         //TODO: Search using API and Show
 
+        var retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(
+            GsonConverterFactory.create()
+        ).build()
+
+        var service = retrofit.create(GetUserService::class.java)
+        var call = service.getProfileDetails("0xpulsar").enqueue(object :Callback<UserProfile>{
+            override fun onFailure(call: Call<UserProfile>, t: Throwable) {
+                Toast.makeText(context,"dd",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
+                Toast.makeText(context,"Success",Toast.LENGTH_LONG).show()
+                val body = response.body()
+
+
+
+            }
+
+        })
+
+
+
         homeViewModel.text.observe(this, Observer {
             searchTxt.text
         })
         return root
     }
+
+
+
+
 
 }
