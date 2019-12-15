@@ -31,9 +31,6 @@ class UserDetailsFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_details, container, false)
 
 
-
-
-
         val profileDataObserver = Observer<UserProfile> { newProfileData ->
             if(root != null && newProfileData != null) {
                 root.findViewById<TextView>(R.id.nameTxt).text = newProfileData.name

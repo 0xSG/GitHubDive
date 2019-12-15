@@ -39,7 +39,7 @@ object  DataSingleTon{
                 isLoadingData.value=false
                 userProfileData.value = body
 
-                if(userProfileData.value?.name.toString().isEmpty())
+                if(userProfileData.value?.name?.length == 0 || userProfileData.value?.name?.length == null)
                     statusText.value = "User not found"
                 else {
                     statusText.value = "User found"
