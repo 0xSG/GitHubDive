@@ -33,26 +33,6 @@ class RepositoryListFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_repo, container, false)
 
 
-        //TODO: Search using API and Show
-
-//        var retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(
-//            GsonConverterFactory.create()
-//        ).build()
-//
-//        var service = retrofit.create(GetUserService::class.java)
-//         service.getProfileDetails("0xpulsar").enqueue(object :Callback<UserProfile>{
-//            override fun onFailure(call: Call<UserProfile>, t: Throwable) {
-//
-//            }
-//            override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
-//                val body = response.body()
-//
-//            }
-//
-//        })
-
-
-
 
 
 

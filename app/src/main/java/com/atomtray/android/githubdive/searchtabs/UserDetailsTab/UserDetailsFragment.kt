@@ -40,7 +40,7 @@ class UserDetailsFragment : Fragment() {
                 Glide.with(root.findViewById<ImageView>(R.id.dp).context)
                     .load(newProfileData.avatarUrl).into(root.findViewById<ImageView>(R.id.dp))
 
-                root.findViewById<TextView>(R.id.repoTxt).text = newProfileData.id.toString()
+                root.findViewById<TextView>(R.id.repoTxt).text = newProfileData.publicRepos.toString()
 
             }
         }
