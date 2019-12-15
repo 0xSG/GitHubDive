@@ -6,8 +6,5 @@ import androidx.lifecycle.ViewModel
 
 class RepositoryListViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Repository list"
-    }
-    val text: LiveData<String> = _text
+
 }
