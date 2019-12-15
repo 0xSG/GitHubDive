@@ -5,6 +5,9 @@ Android GITHUB Data fetching uisng RetroFit and MVVM. Tab1 - about the searched 
 
 ## Screen Shorts
 
+![alt text](https://github.com/0xpulsar/GitHubDive/blob/master/ScreenShots/home.png)
+![alt text](https://github.com/0xpulsar/GitHubDive/blob/master/ScreenShots/Loading.png)
+
 
 ## Dependencies
 
@@ -13,7 +16,7 @@ Android GITHUB Data fetching uisng RetroFit and MVVM. Tab1 - about the searched 
 - RetroFit 2 for fetching data from GitHub
 
 ## Structure
-- data : Contains Singleton classs which holds main data
+- repositories : Contains Singleton classs which holds main data
 - adapters : Contains all the adapters like recycler view adapters etc.
 - model : Contains all blue prints classed of all data used and API, input for retrofit2
 - searchtabs : Only contains modelview files of tabs in search
