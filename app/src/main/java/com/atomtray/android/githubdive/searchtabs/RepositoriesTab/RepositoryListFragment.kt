@@ -4,19 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.atomtray.android.githubdive.R
-import com.atomtray.android.githubdive.api.BASE_URL
-
-import com.atomtray.android.githubdive.api.GetUserService
-import com.atomtray.android.githubdive.model.UserProfile
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.atomtray.android.githubdive.repositories.DataSingleTon
 
 class RepositoryListFragment : Fragment() {
 
@@ -33,7 +25,11 @@ class RepositoryListFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_repo, container, false)
 
 
+        repositoryListViewModel.enableSingleTonObserver(this)
 
+        repositoryListViewModel.userRepoListModel.observe(this, Observer { newRepoListModel->
+            DataSingleTon.statusText.value = "jjjdjd"
+        })
 
 
         return root

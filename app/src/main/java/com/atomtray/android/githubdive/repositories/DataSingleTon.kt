@@ -66,7 +66,7 @@ object  DataSingleTon{
                 val body = response.body()
                 isLoadingData.value=false
                 userRepoListData.value = body
-                
+
             }
 
         })
