@@ -28,7 +28,7 @@ class RepositoryListFragment : Fragment() {
         repositoryListViewModel.enableSingleTonObserver(this)
 
         repositoryListViewModel.userRepoListModel.observe(this, Observer { newRepoListModel->
-            DataSingleTon.statusText.value = "jjjdjd"
+          
         })
 
 
