@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityManager
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.atomtray.android.githubdive.R
+import com.atomtray.android.githubdive.model.UserProfile
 import com.bumptech.glide.Glide
 
 class UserDetailsFragment : Fragment() {
 
     private lateinit var userDetailsViewModel: UserDetailsViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,28 +30,27 @@ class UserDetailsFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_details, container, false)
 
-        val nameObserver = Observer<String> { newName ->
-            // Update the UI, in this case, a TextView.
-            root.findViewById<TextView>(R.id.nameTxt).text = newName
-        }
-        val bioTxtObserver = Observer<String> { newbioTxt ->
-            // Update the UI, in this case, a TextView.
-            root.findViewById<TextView>(R.id.bioTxt).text = newbioTxt
-        }
-        val profileUrlObserver = Observer<String> { newProfileUrl ->
-            Glide.with(root.findViewById<ImageView>(R.id.dp).context).load(newProfileUrl).into(root.findViewById<ImageView>(R.id.dp))
-        }
-        val repoTxtObserver = Observer<String> { newrepoTxt ->
-            // Update the UI, in this case, a TextView.
-            root.findViewById<TextView>(R.id.repoTxt).text = newrepoTxt
-        }
 
 
-        userDetailsViewModel.getValuesN("0xpulsar",this)
-        userDetailsViewModel.name.observe(this,nameObserver)
-        userDetailsViewModel.bio.observe(this,bioTxtObserver)
-        userDetailsViewModel.profileUrl.observe(this,profileUrlObserver)
-        userDetailsViewModel.numRepo.observe(this,repoTxtObserver)
+
+
+        val profileDataObserver = Observer<UserProfile> { newProfileData ->
+            if(root != null && newProfileData != null) {
+                root.findViewById<TextView>(R.id.nameTxt).text = newProfileData.name
+
+                root.findViewById<TextView>(R.id.bioTxt).text = newProfileData.bio
+
+                Glide.with(root.findViewById<ImageView>(R.id.dp).context)
+                    .load(newProfileData.avatarUrl).into(root.findViewById<ImageView>(R.id.dp))
+
+                root.findViewById<TextView>(R.id.repoTxt).text = newProfileData.id.toString()
+
+            }
+        }
+
+        userDetailsViewModel.startObservingSingleTon(this)
+
+        userDetailsViewModel.profileData.observe(this,profileDataObserver)
 
 
         return root

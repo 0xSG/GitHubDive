@@ -22,7 +22,7 @@ object  DataSingleTon{
 
     operator fun invoke() {
 
-
+        isLoadingData.value = true
         var retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(
             GsonConverterFactory.create()
         ).build()
@@ -31,12 +31,20 @@ object  DataSingleTon{
         var detailsservice = retrofit.create(GetUserService::class.java)
         detailsservice.getProfileDetails(userID.value.toString()).enqueue(object : Callback<UserProfile> {
             override fun onFailure(call: Call<UserProfile>, t: Throwable) {
-
+                isLoadingData.value=false
+                statusText.value = "Check your network"
             }
             override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
                 val body = response.body()
                 isLoadingData.value=false
                 userProfileData.value = body
+
+                if(userProfileData.value?.name.toString().isEmpty())
+                    statusText.value = "User not found"
+                else {
+                    statusText.value = "User found"
+                }
+
 
             }
 
@@ -46,9 +54,9 @@ object  DataSingleTon{
         repoListsservice.getRepoList(userID.value.toString()).enqueue(object :
             Callback<List<UserRepoListModel>> {
 
-
             override fun onFailure(call: Call<List<UserRepoListModel>>, t: Throwable) {
-
+                isLoadingData.value=false
+                statusText.value = "Check your network"
             }
 
             override fun onResponse(
@@ -58,6 +66,8 @@ object  DataSingleTon{
                 val body = response.body()
                 isLoadingData.value=false
                 userRepoListData.value = body
+
+
             }
 
         })
@@ -74,5 +84,6 @@ object  DataSingleTon{
     var userProfileData = MutableLiveData<UserProfile>()
     var userRepoListData = MutableLiveData<List<UserRepoListModel>>()
     var isLoadingData = MutableLiveData<Boolean>()
+    var statusText = MutableLiveData<String>()
 
 }
