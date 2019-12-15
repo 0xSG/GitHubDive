@@ -30,7 +30,7 @@ class RepositoryListFragment : Fragment() {
         repositoryListViewModel =
             ViewModelProviders.of(this).get(RepositoryListViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_details, container, false)
+        val root = inflater.inflate(R.layout.fragment_repo, container, false)
 
 
         //TODO: Search using API and Show

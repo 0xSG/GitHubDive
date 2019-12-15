@@ -37,16 +37,20 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        //Initial user data
+        DataSingleTon.setID("0xpulsar")
+
+        //Onclick
         searchBtn.setOnClickListener {
             if(searchTxtData.text.isEmpty()) {
                 Toast.makeText(this, "Please enter text", Toast.LENGTH_SHORT).show()
-                DataSingleTon.setID("0xpulsar")
             }
             else
                 Toast.makeText(this,"Finding...",Toast.LENGTH_SHORT).show()
                 DataSingleTon.setID(searchTxtData.text.toString())
         }
 
+        //Loading effect (LIVE)
         DataSingleTon.isLoadingData.observe(this, Observer { newIsLoading ->
             if (newIsLoading)
                 progressBar.visibility = View.VISIBLE
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 progressBar.visibility = View.INVISIBLE
         })
 
+        //Status from backend (LIVE)
         DataSingleTon.statusText.observe(this, Observer {newStatus ->
 
             Toast.makeText(this,newStatus,Toast.LENGTH_LONG).show()
